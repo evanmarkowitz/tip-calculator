@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Cleave from 'cleave.js/react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      totalBill: ''
+    }
+  }
+  
+  handleInput = (e) => {
+    this.setState({[e.target.name]: e.target.rawValue})
+  }
+
+
+  render() {
+    return (
+      <main>
+        <h1 className='headline'>Tip Calculator</h1>
+        <article className='calculator--wrapper'>
+          <Cleave 
+          placeholder = 'Total Bill'
+          options = {{
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+          }}
+          value={this.state.totalBill}
+          />
+
+          
+        </article>
+      </main>
+    );
+  }
 }
 
 export default App;
