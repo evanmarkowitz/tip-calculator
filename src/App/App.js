@@ -24,6 +24,8 @@ class App extends Component {
     if (parseInt(e.target.rawValue)){
       let value = parseInt(e.target.rawValue)
       this.setState({[e.target.name]: value})
+    } else if (e.target.rawValue === '') {
+      this.setState({[e.target.name]: ''})
     } else {
       this.setState({errorMessage: 'Please only enter Numbers'})
       setTimeout(() => { 
