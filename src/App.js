@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Cleave from 'cleave.js/react'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 import './App.scss';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
     super()
     this.state = {
       totalBill: '',
+      tipPercentage: '',
       partySize: '',
       tipAmount: '',
       totalWithTip: ''
@@ -15,6 +18,10 @@ class App extends Component {
   
   handleInput = (e) => {
     this.setState({[e.target.name]: e.target.rawValue})
+  }
+
+  handlePercentageClick = (e) => {
+    this.setState({[e.target.name]: e.target.value})
   }
 
   render() {
@@ -31,7 +38,20 @@ class App extends Component {
           value={this.state.totalBill}
           name='totalBill'
           className='number__input'
+          onChange={this.handleInput}
           /> 
+          <Select 
+          value={this.state.tipPercentage} 
+          displayEmpty 
+          name='tipPercentage'
+          onChange={this.handlePercentageClick}>
+            <MenuItem value="" disabled>
+              Select a Tip From The Dropdown Menu
+            </MenuItem>
+            <MenuItem value={10}>10</MenuItem>
+            <MenuItem value={15}>15</MenuItem>
+            <MenuItem value={20}>20</MenuItem>
+          </Select>
           <Cleave 
           placeholder = 'Party Size'
           options = {{
