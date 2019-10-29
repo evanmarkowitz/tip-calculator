@@ -27,11 +27,18 @@ class App extends Component {
     } else if (e.target.rawValue === '') {
       this.setState({[e.target.name]: ''})
     } else {
-      this.setState({errorMessage: 'Please only enter Numbers'})
+      this.setState({errorMessage: 'Please only enter Numbers.'})
       setTimeout(() => { 
         this.setState({errorMessage: ''}) 
       }, 3000);
     } 
+  }
+
+  validateInputs = () => {
+    if (this.state.totalBill || this.state.tipPercentage|| this.state.partySize === ''){
+      this.setState({errorMessage: 'Please fill out all fields.'})
+      return
+    }
   }
 
   handlePercentageClick = (e) => {
@@ -40,6 +47,11 @@ class App extends Component {
   }
 
   calculateBill = () => {
+    this.setState({errorMessage: ''})
+    if (this.state.totalBill === '' || this.state.tipPercentage === ''|| this.state.partySize === ''){
+      this.setState({errorMessage: 'Please fill out all fields.'})
+      return
+    }
     let tipAmount = (this.state.totalBill * this.state.tipPercentage / 100)
     this.setState({ tipAmount: tipAmount.toFixed(2) })
     let totalWithTip = tipAmount + this.state.totalBill
