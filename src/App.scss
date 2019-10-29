@@ -1,0 +1,58 @@
+$calc-background-color: #DDDDDD;
+$primary-color: #AFAFAF;
+$headline-color: #454545;
+
+.mainPage--wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $primary-color
+}
+
+.headline {
+  color: $headline-color
+}
+
+.calculator--wrapper {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: $calc-background-color;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 5px;
+  border: 1px solid $primary-color;
+}
+
+.number__input {
+  height: 3em;
+  border: 1px solid $primary-color;
+  margin-bottom: 2em;
+} 
+
+.calc__btn {
+  height: 3em;
+  border: 1px solid $primary-color;
+  margin-bottom: 2em;
+  width: 30%;
+  align-self: flex-end;
+  color: inherit;
+}
+
+.results--wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MuiInputBase-root{ 
+  background-color: #fff;
+}
+
+#percentage__input {
+  background-color: #fff; 
+  padding: 0;
+  color: $primary-color;
+  height: 2em;
+}
