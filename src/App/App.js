@@ -15,13 +15,21 @@ class App extends Component {
       tipAmount: '',
       totalWithTip: '',
       splitAmount: '',
-      availablePercentages: [10, 15, 20]
+      availablePercentages: [10, 15, 20],
+      errorMessage: ''
     }
   }
   
   handleInput = (e) => {
-    let value = parseInt(e.target.rawValue)
-    this.setState({[e.target.name]: value})
+    if (parseInt(e.target.rawValue)){
+      let value = parseInt(e.target.rawValue)
+      this.setState({[e.target.name]: value})
+    } else {
+      this.setState({errorMessage: 'Please only enter Numbers'})
+      setTimeout(() => { 
+        this.setState({errorMessage: ''}) 
+      }, 3000);
+    } 
   }
 
   handlePercentageClick = (e) => {
@@ -77,6 +85,9 @@ class App extends Component {
           onClick={this.calculateBill}>
             Calc Btn
           </button>
+          <p className='error__message'>
+            {this.state.errorMessage}
+          </p>
           <Results type='Tip' amount={this.state.tipAmount}/>
           <Results type='Total' amount={this.state.totalWithTip}/>
           <Results type='Per Person' amount={this.state.splitAmount}/>
