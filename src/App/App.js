@@ -4,6 +4,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import './App.scss';
 import Results from '../Results/Results'
+import NumberInputs from '../NumberInputs/NumberInputs'
 
 class App extends Component {
   constructor() {
@@ -42,17 +43,12 @@ class App extends Component {
       <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
         <article className='calculator--wrapper'>
-          <Cleave 
-          placeholder = 'Total Bill'
-          options = {{
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand'
-          }}
-          value={this.state.totalBill}
-          name='totalBill'
-          className='number__input'
-          onChange={this.handleInput}
-          /> 
+          <NumberInputs 
+            placeholder = 'Total Bill'
+            value={this.state.totalBill}
+            name='totalBill'
+            handleInput={this.handleInput}
+          />
           <Select 
           value={this.state.tipPercentage} 
           displayEmpty 
@@ -68,17 +64,12 @@ class App extends Component {
             <MenuItem value={15}>15</MenuItem>
             <MenuItem value={20}>20</MenuItem>
           </Select>
-          <Cleave 
-          placeholder = 'Party Size'
-          options = {{
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand'
-          }}
-          value={this.state.partySize}
-          name='partySize'
-          className='number__input'
-          onChange={this.handleInput}
-          /> 
+          <NumberInputs 
+            placeholder = 'Party Size'
+            value={this.state.partySize}
+            name='partySize'
+            handleInput={this.handleInput}
+          />
           <button 
           type='button'
           className='calc__btn'
