@@ -6,14 +6,14 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      totalBill: ''
+      totalBill: '',
+      partySize: ''
     }
   }
   
   handleInput = (e) => {
     this.setState({[e.target.name]: e.target.rawValue})
   }
-
 
   render() {
     return (
@@ -27,9 +27,18 @@ class App extends Component {
             numeralThousandsGroupStyle: 'thousand'
           }}
           value={this.state.totalBill}
-          />
-
-          
+          name='totalBill'
+          /> 
+          <Cleave 
+          placeholder = 'Party Size'
+          options = {{
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+          }}
+          value={this.state.partySize}
+          name='partySize'
+          /> 
+              
         </article>
       </main>
     );
