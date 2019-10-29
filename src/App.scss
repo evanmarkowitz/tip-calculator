@@ -45,3 +45,14 @@ $headline-color: #454545;
   display: flex;
   justify-content: space-between;
 }
+
+.MuiInputBase-root{ 
+  background-color: #fff;
+}
+
+#percentage__input {
+  background-color: #fff; 
+  padding: 0;
+  color: $primary-color;
+  height: 2em;
+}

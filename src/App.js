@@ -12,7 +12,8 @@ class App extends Component {
       tipPercentage: '',
       partySize: '',
       tipAmount: '',
-      totalWithTip: ''
+      totalWithTip: '',
+      splitAmount: ''
     }
   }
   
@@ -44,7 +45,10 @@ class App extends Component {
           value={this.state.tipPercentage} 
           displayEmpty 
           name='tipPercentage'
-          onChange={this.handlePercentageClick}>
+          onChange={this.handlePercentageClick}
+          className='number__input'
+          id='percentage__input'
+          >
             <MenuItem value="" disabled>
               Select a Tip From The Dropdown Menu
             </MenuItem>
@@ -72,6 +76,10 @@ class App extends Component {
           <section className='results--wrapper'>
             <p>Total:</p>
             <p>${this.state.totalWithTip}</p>
+          </section>
+          <section className='results--wrapper'>
+            <p>Per Person:</p>
+            <p>${this.state.splitAmount}</p>
           </section>
         </article>
       </main>
