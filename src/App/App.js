@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Cleave from 'cleave.js/react'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import './App.scss';
 import Results from '../Results/Results'
 import NumberInputs from '../NumberInputs/NumberInputs'
+import './App.scss';
 
 class App extends Component {
   constructor() {
@@ -15,7 +14,8 @@ class App extends Component {
       partySize: '',
       tipAmount: '',
       totalWithTip: '',
-      splitAmount: ''
+      splitAmount: '',
+      availablePercentages: [10, 15, 20]
     }
   }
   
@@ -39,6 +39,9 @@ class App extends Component {
   }
 
   render() {
+    const buildPercentages = this.state.availablePercentages.map(percent => {
+      return <MenuItem value={percent} key={percent}>{percent}</MenuItem>
+    })
     return (
       <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
@@ -60,9 +63,7 @@ class App extends Component {
             <MenuItem value="" disabled>
               Select a Tip From The Dropdown Menu
             </MenuItem>
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={15}>15</MenuItem>
-            <MenuItem value={20}>20</MenuItem>
+            {buildPercentages}
           </Select>
           <NumberInputs 
             placeholder = 'Party Size'
