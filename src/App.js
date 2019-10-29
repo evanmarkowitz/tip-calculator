@@ -7,7 +7,9 @@ class App extends Component {
     super()
     this.state = {
       totalBill: '',
-      partySize: ''
+      partySize: '',
+      tipAmount: '',
+      totalWithTip: ''
     }
   }
   
@@ -28,6 +30,7 @@ class App extends Component {
           }}
           value={this.state.totalBill}
           name='totalBill'
+          className='number__input'
           /> 
           <Cleave 
           placeholder = 'Party Size'
@@ -37,7 +40,19 @@ class App extends Component {
           }}
           value={this.state.partySize}
           name='partySize'
+          className='number__input'
           /> 
+          <button className='calc__btn'>
+            Calc Btn
+          </button>
+          <section className='results--wrapper'>
+            <p>Tip:</p>
+            <p>${this.state.tipAmount}</p>
+          </section>
+          <section className='results--wrapper'>
+            <p>Total:</p>
+            <p>${this.state.totalWithTip}</p>
+          </section>
         </article>
       </main>
     );
