@@ -3,6 +3,7 @@ import Cleave from 'cleave.js/react'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import './App.scss';
+import Results from '../Results/Results'
 
 class App extends Component {
   constructor() {
@@ -84,18 +85,9 @@ class App extends Component {
           onClick={this.calculateBill}>
             Calc Btn
           </button>
-          <section className='results--wrapper'>
-            <p>Tip:</p>
-            <p>${this.state.tipAmount}</p>
-          </section>
-          <section className='results--wrapper'>
-            <p>Total:</p>
-            <p>${this.state.totalWithTip}</p>
-          </section>
-          <section className='results--wrapper'>
-            <p>Per Person:</p>
-            <p>${this.state.splitAmount}</p>
-          </section>
+          <Results type='Tip' amount={this.state.tipAmount}/>
+          <Results type='Total' amount={this.state.totalWithTip}/>
+          <Results type='Per Person' amount={this.state.splitAmount}/>
         </article>
       </main>
     );
