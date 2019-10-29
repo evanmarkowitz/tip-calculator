@@ -6,7 +6,7 @@ const NumberInputs = ({placeholder, name, value, handleInput}) => {
     <Cleave 
     placeholder = {placeholder}
     options = {{
-      numeral: true,
+      numeral: false,
       numeralThousandsGroupStyle: 'thousand'
     }}
     value={value}

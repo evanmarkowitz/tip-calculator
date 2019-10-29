@@ -15,13 +15,30 @@ class App extends Component {
       tipAmount: '',
       totalWithTip: '',
       splitAmount: '',
-      availablePercentages: [10, 15, 20]
+      availablePercentages: [10, 15, 20],
+      errorMessage: ''
     }
   }
   
   handleInput = (e) => {
-    let value = parseInt(e.target.rawValue)
-    this.setState({[e.target.name]: value})
+    if (parseInt(e.target.rawValue)){
+      let value = parseInt(e.target.rawValue)
+      this.setState({[e.target.name]: value})
+    } else if (e.target.rawValue === '') {
+      this.setState({[e.target.name]: ''})
+    } else {
+      this.setState({errorMessage: 'Please only enter Numbers.'})
+      setTimeout(() => { 
+        this.setState({errorMessage: ''}) 
+      }, 3000);
+    } 
+  }
+
+  validateInputs = () => {
+    if (this.state.totalBill || this.state.tipPercentage|| this.state.partySize === ''){
+      this.setState({errorMessage: 'Please fill out all fields.'})
+      return
+    }
   }
 
   handlePercentageClick = (e) => {
@@ -30,6 +47,11 @@ class App extends Component {
   }
 
   calculateBill = () => {
+    this.setState({errorMessage: ''})
+    if (this.state.totalBill === '' || this.state.tipPercentage === ''|| this.state.partySize === ''){
+      this.setState({errorMessage: 'Please fill out all fields.'})
+      return
+    }
     let tipAmount = (this.state.totalBill * this.state.tipPercentage / 100)
     this.setState({ tipAmount: tipAmount.toFixed(2) })
     let totalWithTip = tipAmount + this.state.totalBill
@@ -77,6 +99,9 @@ class App extends Component {
           onClick={this.calculateBill}>
             Calc Btn
           </button>
+          <p className='error__message'>
+            {this.state.errorMessage}
+          </p>
           <Results type='Tip' amount={this.state.tipAmount}/>
           <Results type='Total' amount={this.state.totalWithTip}/>
           <Results type='Per Person' amount={this.state.splitAmount}/>

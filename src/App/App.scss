@@ -56,3 +56,13 @@ $headline-color: #454545;
   color: $primary-color;
   height: 2em;
 }
+
+.error__message {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  .calculator--wrapper  {
+    width: 90%;
+  }
+}
