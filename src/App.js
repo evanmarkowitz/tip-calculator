@@ -18,11 +18,22 @@ class App extends Component {
   }
   
   handleInput = (e) => {
-    this.setState({[e.target.name]: e.target.rawValue})
+    let value = parseInt(e.target.rawValue)
+    this.setState({[e.target.name]: value})
   }
 
   handlePercentageClick = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    let value = parseInt(e.target.value)
+    this.setState({[e.target.name]: value})
+  }
+
+  calculateBill = () => {
+    let tipAmount = (this.state.totalBill * this.state.tipPercentage / 100)
+    this.setState({ tipAmount: tipAmount.toFixed(2) })
+    let totalWithTip = tipAmount + this.state.totalBill
+    this.setState({ totalWithTip: totalWithTip.toFixed(2)})
+    let splitAmount = totalWithTip / this.state.partySize
+    this.setState({ splitAmount: splitAmount.toFixed(2) })
   }
 
   render() {
@@ -65,8 +76,12 @@ class App extends Component {
           value={this.state.partySize}
           name='partySize'
           className='number__input'
+          onChange={this.handleInput}
           /> 
-          <button className='calc__btn'>
+          <button 
+          type='button'
+          className='calc__btn'
+          onClick={this.calculateBill}>
             Calc Btn
           </button>
           <section className='results--wrapper'>
