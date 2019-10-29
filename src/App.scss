@@ -1,3 +1,6 @@
+$calc-background-color: #DDDDDD;
+$border-color: #AFAFAF;
+
 .mainPage--wrapper {
   height: 100vh;
   display: flex;
@@ -10,8 +13,9 @@
   width: 500px;
   display: flex;
   flex-direction: column;
-  background-color: #DDDDDD;
+  background-color: $calc-background-color;
   box-sizing: border-box;
   padding: 25px;
   border-radius: 5px;
+  border: 1px solid $border-color;
 }
