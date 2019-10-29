@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <main>
+      <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
         <article className='calculator--wrapper'>
           <Cleave 
@@ -38,7 +38,6 @@ class App extends Component {
           value={this.state.partySize}
           name='partySize'
           /> 
-              
         </article>
       </main>
     );

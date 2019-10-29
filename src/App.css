@@ -1,0 +1,17 @@
+.mainPage--wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator--wrapper {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #DDDDDD;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 5px;
+}
