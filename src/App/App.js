@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Cleave from 'cleave.js/react'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Results from '../Results/Results'
+import NumberInputs from '../NumberInputs/NumberInputs'
 import './App.scss';
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
       partySize: '',
       tipAmount: '',
       totalWithTip: '',
-      splitAmount: ''
+      splitAmount: '',
+      availablePercentages: [10, 15, 20]
     }
   }
   
@@ -37,21 +39,19 @@ class App extends Component {
   }
 
   render() {
+    const buildPercentages = this.state.availablePercentages.map(percent => {
+      return <MenuItem value={percent} key={percent}>{percent}</MenuItem>
+    })
     return (
       <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
         <article className='calculator--wrapper'>
-          <Cleave 
-          placeholder = 'Total Bill'
-          options = {{
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand'
-          }}
-          value={this.state.totalBill}
-          name='totalBill'
-          className='number__input'
-          onChange={this.handleInput}
-          /> 
+          <NumberInputs 
+            placeholder = 'Total Bill'
+            value={this.state.totalBill}
+            name='totalBill'
+            handleInput={this.handleInput}
+          />
           <Select 
           value={this.state.tipPercentage} 
           displayEmpty 
@@ -63,39 +63,23 @@ class App extends Component {
             <MenuItem value="" disabled>
               Select a Tip From The Dropdown Menu
             </MenuItem>
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={15}>15</MenuItem>
-            <MenuItem value={20}>20</MenuItem>
+            {buildPercentages}
           </Select>
-          <Cleave 
-          placeholder = 'Party Size'
-          options = {{
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand'
-          }}
-          value={this.state.partySize}
-          name='partySize'
-          className='number__input'
-          onChange={this.handleInput}
-          /> 
+          <NumberInputs 
+            placeholder = 'Party Size'
+            value={this.state.partySize}
+            name='partySize'
+            handleInput={this.handleInput}
+          />
           <button 
           type='button'
           className='calc__btn'
           onClick={this.calculateBill}>
             Calc Btn
           </button>
-          <section className='results--wrapper'>
-            <p>Tip:</p>
-            <p>${this.state.tipAmount}</p>
-          </section>
-          <section className='results--wrapper'>
-            <p>Total:</p>
-            <p>${this.state.totalWithTip}</p>
-          </section>
-          <section className='results--wrapper'>
-            <p>Per Person:</p>
-            <p>${this.state.splitAmount}</p>
-          </section>
+          <Results type='Tip' amount={this.state.tipAmount}/>
+          <Results type='Total' amount={this.state.totalWithTip}/>
+          <Results type='Per Person' amount={this.state.splitAmount}/>
         </article>
       </main>
     );
