@@ -3,6 +3,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Results from '../Results/Results'
 import NumberInputs from '../NumberInputs/NumberInputs'
+import CreditCard from '../CreditCard/CreditCard'
 import './App.scss';
 
 class App extends Component {
@@ -105,6 +106,7 @@ class App extends Component {
           <Results type='Tip' amount={this.state.tipAmount}/>
           <Results type='Total' amount={this.state.totalWithTip}/>
           <Results type='Per Person' amount={this.state.splitAmount}/>
+          {this.state.totalWithTip && <CreditCard qty={this.state.partySize}/>}
         </article>
       </main>
     );
