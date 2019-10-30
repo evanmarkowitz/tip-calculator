@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.5.2",
     "cleave.js": "^1.5.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -29,6 +31,15 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/setupTest.js",
+      "!src/serviceWorker.js",
+      "!src/reducers/index.js"
     ]
   }
 }

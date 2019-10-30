@@ -15,11 +15,12 @@ class CreditCard extends Component  {
         creditCard: true,
       }}
       className='number__input'
+      key={i}
       /> )
     }
     
       return (
-        <section className='creditcard-wrapper'>
+        <section className='creditcard--wrapper'>
           <article className='credit-input--wrapper'>
             {cards}
           </article>
