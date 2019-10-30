@@ -6,6 +6,7 @@ import NumberInputs from '../NumberInputs/NumberInputs'
 import CreditCard from '../CreditCard/CreditCard'
 import './App.scss';
 
+
 class App extends Component {
   constructor() {
     super()
@@ -68,7 +69,11 @@ class App extends Component {
     return (
       <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
-        <article className='calculator--wrapper'>
+        <article className={`calculator--wrapper 
+          ${this.state.tipPercentage === 10 ? 'calc--low border-low ': ''}
+          ${this.state.tipPercentage === 15 ? 'calc--med border-med ': ''}
+          ${this.state.tipPercentage === 20 ? 'calc--high border-high ': ''}
+          `} >
           <NumberInputs 
             placeholder = 'Total Bill'
             value={this.state.totalBill}
@@ -112,5 +117,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
