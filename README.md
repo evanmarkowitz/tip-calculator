@@ -1,5 +1,15 @@
-## Installation
 
+## Screenshots
+<img src='./src/calculator.gif' alt='calculator'/>
+<img src='./src/testshot.png' alt='testing'/>
+
+## Technologies Used
+- React 
+- SCSS
+- Jest/Enzyme
+- Material UI
+
+## Installation
 ```
 git clone https://github.com/evanmarkowitz/tip-calculator.git
 ```
