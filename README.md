@@ -13,4 +13,4 @@ To view the app in action, run the following command in your terminal:
 ```
 npm start
 ```
-Then, go to http://localhost:3001/ in your browser to see the code running in the browser.
+Then, go to http://localhost:3000/ in your browser to see the code running in the browser.
