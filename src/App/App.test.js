@@ -61,6 +61,4 @@ describe('App', () => {
     wrapper.instance().calculateBill();
     expect(wrapper.state('totalWithTip')).toEqual("220.00");
   })
-
-
 })
