@@ -15,6 +15,7 @@ class CreditCard extends Component  {
         creditCard: true,
       }}
       className='number__input'
+      key={i}
       /> )
     }
     
