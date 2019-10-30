@@ -3,6 +3,15 @@ $primary-color: #AFAFAF;
 $headline-color: #454545;
 
 
+$calc-background-low: black;
+$primary-color-low: #ED5A57;
+
+$calc-background-med: #2A2C2B;
+$primary-color-med: #BDC3C7;
+
+$calc-background-high: #fff4e4;
+$primary-color-high: #228B22;
+
 .mainPage--wrapper {
   height: 100vh;
   display: flex;
@@ -20,11 +29,27 @@ $headline-color: #454545;
   width: 500px;
   display: flex;
   flex-direction: column;
-  // background-color: $calc-background-color;
+  background-color: $calc-background-color;
   box-sizing: border-box;
   padding: 25px;
   border-radius: 5px;
   border: 1px solid $primary-color;
+}
+
+.calc--low {
+  background-color: $calc-background-low;
+  color: $primary-color-low
+}
+
+.calc--high {
+  background-color: $calc-background-high;
+  color: $primary-color-high
+}
+
+.calc--med {
+  background-color: $calc-background-med;
+  color: $primary-color-med
+
 }
 
 .number__input {
@@ -63,6 +88,17 @@ $headline-color: #454545;
   color: red;
 }
 
+.border-med {
+  border: 1px solid $primary-color-med;
+}
+
+.border-high {
+  border: 1px solid $primary-color-high;
+}
+
+.border-red {
+  border: 1px solid $primary-color-low;
+}
 
 .creditcard-wrapper,
 .credit-input--wrapper {

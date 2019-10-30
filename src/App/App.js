@@ -4,7 +4,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Results from '../Results/Results'
 import NumberInputs from '../NumberInputs/NumberInputs'
 import CreditCard from '../CreditCard/CreditCard'
-import styled from 'styled-components'
 import './App.scss';
 
 
@@ -19,10 +18,7 @@ class App extends Component {
       totalWithTip: '',
       splitAmount: '',
       availablePercentages: [10, 15, 20],
-      errorMessage: '',
-      theme: [{
-        calcBackgroundColor: 'red'
-      }]
+      errorMessage: ''
     }
   }
   
@@ -73,7 +69,11 @@ class App extends Component {
     return (
       <main className='mainPage--wrapper'>
         <h1 className='headline'>Tip Calculator</h1>
-        <Calculator theme={this.state.theme[0]} className='calculator--wrapper'>
+        <article className={`calculator--wrapper 
+          ${this.state.tipPercentage === 10 ? 'calc--low border-low ': ''}
+          ${this.state.tipPercentage === 15 ? 'calc--med border-med ': ''}
+          ${this.state.tipPercentage === 20 ? 'calc--high border-high ': ''}
+          `} >
           <NumberInputs 
             placeholder = 'Total Bill'
             value={this.state.totalBill}
@@ -112,16 +112,11 @@ class App extends Component {
           <Results type='Total' amount={this.state.totalWithTip}/>
           <Results type='Per Person' amount={this.state.splitAmount}/>
           {this.state.totalWithTip && <CreditCard qty={this.state.partySize}/>}
-        </Calculator>
+        </article>
       </main>
     );
   }
 }
-
-const Calculator = styled.div`
-  background-color: ${props => props.theme.calcBackgroundColor}
-`
-
 
 
 export default App;
