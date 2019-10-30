@@ -19,7 +19,7 @@ class CreditCard extends Component  {
     }
     
       return (
-        <section className='creditcard-wrapper'>
+        <section className='creditcard--wrapper'>
           <article className='credit-input--wrapper'>
             {cards}
           </article>
