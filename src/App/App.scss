@@ -2,6 +2,7 @@ $calc-background-color: #DDDDDD;
 $primary-color: #AFAFAF;
 $headline-color: #454545;
 
+
 .mainPage--wrapper {
   height: 100vh;
   display: flex;
@@ -19,7 +20,7 @@ $headline-color: #454545;
   width: 500px;
   display: flex;
   flex-direction: column;
-  background-color: $calc-background-color;
+  // background-color: $calc-background-color;
   box-sizing: border-box;
   padding: 25px;
   border-radius: 5px;
